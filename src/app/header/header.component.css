@@ -4,11 +4,26 @@
   background-color: white;
   font-weight: bold;
   border: none;
+  padding-right: 20px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 
   &:hover {
     color: #EB5E28;
   }
+}
 
+.logo img {
+  height: 100px;
+  width: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav {
+  padding-right: 40px;
 }
