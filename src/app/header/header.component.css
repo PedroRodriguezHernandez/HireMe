@@ -1,0 +1,14 @@
+.btn-login {
+  color: black;
+  font-size: 20px;
+  background-color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    color: #EB5E28;
+  }
+
+}
