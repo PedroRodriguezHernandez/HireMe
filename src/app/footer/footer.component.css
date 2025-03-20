@@ -1,0 +1,44 @@
+.footer-row {
+    display: flex;
+    justify-content: space-between; /* Distribuye los elementos */
+    background-color: #EB5E28; /* Fondo naranja */
+}
+
+.colum {
+    flex: 1; /* Hace que cada columna tenga el mismo tamaño */
+    padding: 25px 50px 15px 50px;
+    text-align: left;
+    color: white;
+    font-family: 'Inter', sans-serif;
+}
+
+.colum span{
+    font-weight: 400;
+    font-size: 20px;
+}
+.colum .content {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    gap: 10px;
+    
+}
+
+.content li{
+    margin-bottom: 10px;
+}
+
+.social-network {
+    display: flex;
+    gap: 10px; /* Espacio entre los iconos */
+    padding: 0;
+}
+
+.social-network li {
+    display: inline-block;
+}
+
+img {
+    width: 30px; /* Tamaño ajustable para los íconos */
+    height: auto;
+}
