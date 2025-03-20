@@ -15,6 +15,9 @@
 
 .logo img {
   height: 100px;
+  border: none;
+  background-color: white;
+  cursor: pointer;
   width: auto;
 }
 
