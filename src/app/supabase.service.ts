@@ -71,4 +71,25 @@ export class SupabaseService {
     await this.router.navigate(['']);
   }
 
+  async getUserData() {
+    const { data: { user }, error: authError } = await this.supabase.auth.getUser();
+
+    if (authError || !user) {
+      return { error: 'No authenticated user found' };
+    }
+
+    const { data, error } = await this.supabase
+      .from('users')
+      .select('*')
+      .eq('id', user.id)
+      .single();
+
+    if (error) {
+      return { error: `Error fetching user data: ${error.message}` };
+    }
+
+    return { userData: data };
+  }
+
+
 }
