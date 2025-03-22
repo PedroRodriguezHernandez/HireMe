@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { environment } from '../environments/environment';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { environment } from '../environments/environment';
 export class SupabaseService {
   private supabase: SupabaseClient;
 
-  constructor() {
+  constructor(private router: Router) {
     this.supabase = createClient(environment.supabaseUrl, environment.supabaseKey);
   }
 
@@ -34,7 +35,7 @@ export class SupabaseService {
         {
           id: user?.id,
           name: name,
-          photo: '../assets/default-profile.png',
+          photo: '',
           location: '',
           phone: '',
           favorites: [],
@@ -48,4 +49,26 @@ export class SupabaseService {
 
     return { user, session };
   }
+
+  async signIn(credentials: {email: string, password: string}) {
+    return new Promise(async (resolve, reject) => {
+      const {error, data} = await this.supabase.auth.signInWithPassword(credentials);
+      if (error) {
+        reject(error);
+      } else {
+        resolve(data);
+      }
+    });
+  }
+
+  async signOut() {
+    await this.supabase.auth.signOut();
+
+    this.supabase.getChannels().map(sup => {
+      this.supabase.removeChannel(sup);
+    });
+
+    await this.router.navigate(['']);
+  }
+
 }
