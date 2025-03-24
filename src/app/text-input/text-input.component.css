@@ -1,0 +1,23 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
+
+label {
+  color: #4a4a4a;
+  margin-bottom: 4px;
+}
+
+input {
+  border: none;
+  border-bottom: 2px solid #ff7043;
+  padding: 8px;
+  transition: border-color 0.3s ease;
+  outline: none;
+  background: transparent;
+}
+
+input:focus {
+  border-bottom-color: #e64a19;
+}
