@@ -1,0 +1,21 @@
+.lateral {
+  position: fixed;
+  width: 500px;
+  height: 100vh;
+  background-color: #EB5E28;
+  left: 0;
+  top: 0;
+}
+
+.girl {
+  position: absolute;
+  left: 200px;
+  bottom: 0;
+  z-index: 2;
+}
+
+.girl img {
+  width: 200px;
+  height: auto;
+}
+
