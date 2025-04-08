@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {NgOptimizedImage} from '@angular/common';
 import {ButonComponent} from '../buton/buton.component';
+import {SupabaseService} from '../../services/supabase.service';
 
 @Component({
   selector: 'app-profile',
@@ -14,4 +15,14 @@ import {ButonComponent} from '../buton/buton.component';
 })
 export class ProfileComponent {
   title = 'profile'
+  constructor(private supabaseService: SupabaseService) {}
+
+  ngOnInit() {
+    const userData = this.supabaseService.getUserData();
+    console.log(userData);
+  }
 }
+
+
+
+
