@@ -12,7 +12,6 @@ import {TextInputComponent} from './text-input/text-input.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, ButonComponent, HeaderWithLoginComponent, LateralOrangeComponent, LoginPageComponent, TextInputComponent],
   imports: [RouterOutlet, HeaderComponent, ButonComponent, HeaderWithLoginComponent, FooterComponent, CreateComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

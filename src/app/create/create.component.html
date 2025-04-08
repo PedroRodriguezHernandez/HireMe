@@ -1,24 +1,53 @@
 <app-header-with-login></app-header-with-login>
 <div class="body">
-    <div class="anuncio">
+    <form class="anuncio" [formGroup]="form">
       <div class="top">
-        <input class="title" type="text" placeholder="Title" />
-        <input class="data" type="text" placeholder="Location" />
+        <input class="title"
+               type="text"
+               [ngClass]="{'invalid-field': formSubmitted && form.controls.title?.invalid}"
+               [formControl]="form.controls.title"
+               placeholder="Title" />
+        <input class="data"
+               type="text"
+               [ngClass]="{'invalid-field': formSubmitted && form.controls.location?.invalid}"
+               [formControl]="form.controls.location"
+               placeholder="Location" />
         <div class="price">
-          <input class="data" type="number" placeholder="Price" />
+          <input class="data"
+                 type="number"
+                 [ngClass]="{'invalid-field':  formSubmitted && form.controls.price?.invalid}"
+                 [formControl]="form.controls.price"
+                 placeholder="Price" />
           <a class="data">€/h</a>
         </div>
-        <input class="data" type="text" placeholder="Experience" />
+        <input class="data"
+               type="text"
+               [ngClass]="{'invalid-field': formSubmitted && form.controls.experience?.invalid}"
+               [formControl]="form.controls.experience"
+               placeholder="Experience" />
       </div>
       <div class="content">
         <h2>Small initial description</h2>
-        <textarea id="small-text" placeholder="Write here..."></textarea>
-        <p class = "counter">0 / 50 words</p>
+        <textarea id="small-text"
+                  (input)="onSmallCharInput($event)"
+                  [value]="smallText"
+                  [ngClass]="{'invalid-field': formSubmitted && form.controls.short?.invalid}"
+                  [formControl]="form.controls.short"
+                  placeholder="Write here..."></textarea>
+        <p class = "counter">{{ smallCharCount }} / {{ SMALL_LIMIT }} characters</p>
         <h2>Detailed description
         </h2>
-        <textarea id="large-text" placeholder="Write here..."></textarea>
-        <p class = "counter">0 / 500 words</p>
+        <textarea id="large-text"
+                  (input)="onLargeCharInput($event)"
+                  [ngClass]="{'invalid-field':  formSubmitted && form.controls.large?.invalid}"
+                  [value]="largeText"
+                  [formControl]="form.controls.large"
+                  placeholder="Write here..."></textarea>
+        <p class = "counter">{{ largeCharCount }} / {{ LARGE_LIMIT }} characters</p>
       </div>
-    </div>
+      <div class="button-bar">
+        <app-buton (click)="submitForm()" [text]="'Publish'"></app-buton>
+      </div>
+    </form>
 </div>
 <app-footer></app-footer>
