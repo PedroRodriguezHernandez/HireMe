@@ -3,7 +3,7 @@ import {LateralOrangeComponent} from '../lateral-orange/lateral-orange.component
 import {TextInputComponent} from '../text-input/text-input.component';
 import {ButonComponent} from '../buton/buton.component';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {SupabaseService} from '../supabase.service';
+import {SupabaseService} from '../../services/supabase.service';
 import {NgIf} from '@angular/common';
 import {showAlert} from '../../services/utils';
 
