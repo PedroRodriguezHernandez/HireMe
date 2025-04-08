@@ -32,7 +32,6 @@ export class LoginPageComponent {
   }
 
   login() {
-    console.log(this.loginForm.value);
     if (this.loginForm.valid) {
       const credentials = {
         email: this.loginForm.value.email ?? "",
@@ -47,7 +46,6 @@ export class LoginPageComponent {
           showAlert("Email or password is incorrect", "Please check your email and password and try again.");
         });
     } else {
-      console.log("Form is invalid");
       showAlert("Invalid form", "Please check your email and password.");
     }
   }
