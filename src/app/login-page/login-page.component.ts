@@ -6,6 +6,7 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {SupabaseService} from '../../services/supabase.service';
 import {NgIf} from '@angular/common';
 import {showAlert} from '../../services/utils';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -27,7 +28,7 @@ export class LoginPageComponent {
   });
   errorMessage: string = '';
 
-  constructor(private supabaseService: SupabaseService) {
+  constructor(private supabaseService: SupabaseService, private router : Router) {
 
   }
 
@@ -41,6 +42,7 @@ export class LoginPageComponent {
       this.supabaseService.signIn(credentials)
         .then(response => {
           console.log('Login successful:', response);
+          this.router.navigate(["my-profile"]);
         })
         .catch(async error => {
           showAlert("Email or password is incorrect", "Please check your email and password and try again.");
