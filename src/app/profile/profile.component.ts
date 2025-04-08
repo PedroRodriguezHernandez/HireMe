@@ -16,10 +16,16 @@ import {SupabaseService} from '../../services/supabase.service';
 export class ProfileComponent {
   title = 'profile'
   constructor(private supabaseService: SupabaseService) {}
+  name: string = '';
+  email: string = '';
+  location: string = '';
 
-  ngOnInit() {
-    const userData = this.supabaseService.getUserData();
-    console.log(userData);
+  async ngOnInit() {
+    const userData = await this.supabaseService.getUserData();
+    this.name = JSON.stringify(userData["userData"]["name"]);
+    this.email = JSON.stringify(userData["userData"]["email"]);
+    this.name = this.name.replace(/['"]+/g, '');
+    this.email = this.email.replace(/['"]+/g, '');
   }
 }
 
