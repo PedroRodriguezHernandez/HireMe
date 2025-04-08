@@ -9,20 +9,38 @@
     <img src="/girl.png">
   </div>
 
-  <div class="login">
-    <h1>Welcome back!</h1>
-    <div class="imageLogo">
-      <img src="/imageLogo.png">
-    </div>
-    <div class="text-input">
-      <app-text-input placeholder="Email" type="email"></app-text-input>
-    </div>
-    <div class="text-input">
-      <app-text-input placeholder="Password" type="password"></app-text-input>
-    </div>
-    <p class="password">Forgot your password?</p>
-    <app-buton text="Sign in"></app-buton>
-    <p class="register">Don't have an account yet? <span class="highlight">Sign up</span></p>
+<div class="login">
+  <h1>Welcome back!</h1>
+
+  <div class="imageLogo">
+    <img src="/imageLogo.png">
   </div>
+
+  <form [formGroup]="loginForm">
+    <div class="text-input">
+      <app-text-input
+        placeholder="Email"
+        type="email"
+        [control]="loginForm.controls.email"
+      ></app-text-input>
+    </div>
+
+    <div class="text-input">
+      <app-text-input
+        placeholder="Password"
+        type="password"
+        [control]="loginForm.controls.password"
+      ></app-text-input>
+    </div>
+
+    <p class="password">Forgot your password?</p>
+
+    <app-buton text="Iniciar Sesión" (action)="login()"></app-buton>
+
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
+    <p class="register">Don't have an account yet? <span class="highlight">Sign up</span></p>
+  </form>
+</div>
 </div>
 <app-footer></app-footer>

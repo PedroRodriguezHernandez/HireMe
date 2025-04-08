@@ -6,11 +6,13 @@ import {HeaderWithLoginComponent} from './header-with-login/header-with-login.co
 import {LoginPageComponent} from './login-page/login-page.component';
 import {TextInputComponent} from './text-input/text-input.component';
 import {FooterComponent} from './footer/footer.component';
+import {ProfileComponent} from './profile/profile.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FooterComponent, HeaderComponent, ButonComponent, HeaderWithLoginComponent, LoginPageComponent, TextInputComponent],
+  imports: [RouterOutlet, HeaderComponent, ButonComponent, HeaderWithLoginComponent,
+    LoginPageComponent, TextInputComponent, ProfileComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
