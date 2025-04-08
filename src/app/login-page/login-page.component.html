@@ -1,26 +1,28 @@
-<header class="header">
-  <div class="logo">
-    <img src="/logoSinFondo.png">
+<div class="container">
+  <div class="lateral">
+    <div class="logo">
+      <img src="/logoSinFondo.png">
+    </div>
   </div>
-</header>
-<app-lateral-orange></app-lateral-orange>
-<div class="login">
-  <h1>¡Bienvenido de nuevo!</h1>
-  <div class="imageLogo">
-    <img src="/imageLogo.png">
-  </div>
-  <div class="text-input">
-    <app-text-input placeholder="Correo electrónico" type="email"></app-text-input>
-  </div>
-  <div class="text-input">
-    <app-text-input placeholder="Contraseña" type="password"></app-text-input>
-  </div>
-  <p>
-    ¿Has olvidado tu contraseña?
-  </p>
-  <app-buton text="Iniciar Sesión"></app-buton>
-  <p>
-    ¿Todavía no tienes una cuenta? Regístrate
-  </p>
-</div>
 
+  <div class="girl">
+    <img src="/girl.png">
+  </div>
+
+  <div class="login">
+    <h1>Welcome back!</h1>
+    <div class="imageLogo">
+      <img src="/imageLogo.png">
+    </div>
+    <div class="text-input">
+      <app-text-input placeholder="Email" type="email"></app-text-input>
+    </div>
+    <div class="text-input">
+      <app-text-input placeholder="Password" type="password"></app-text-input>
+    </div>
+    <p class="password">Forgot your password?</p>
+    <app-buton text="Sign in"></app-buton>
+    <p class="register">Don't have an account yet? <span class="highlight">Sign up</span></p>
+  </div>
+</div>
+<app-footer></app-footer>
