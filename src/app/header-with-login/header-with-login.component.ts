@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {ButonComponent} from '../buton/buton.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header-with-login',
@@ -9,5 +10,11 @@ import {ButonComponent} from '../buton/buton.component';
   styleUrl: './header-with-login.component.css'
 })
 export class HeaderWithLoginComponent {
+
+  constructor(private router: Router) { }
+
+  goTo(pageName: string) {
+    this.router.navigate([pageName])
+  }
 
 }
