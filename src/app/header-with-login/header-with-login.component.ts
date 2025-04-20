@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header-with-login',
-  imports: [ButonComponent],
+  imports: [],
   templateUrl: './header-with-login.component.html',
   standalone: true,
   styleUrl: './header-with-login.component.css'
