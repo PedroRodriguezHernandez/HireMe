@@ -8,11 +8,14 @@
 </head>
 <app-header-with-login></app-header-with-login>
 <body>
+<div class="header">
+  <app-header-with-login></app-header-with-login>
+</div>
 <div class="container">
   <aside class="sidebar">
     <nav>
       <ul>
-        <li><img src="/iconoMisAnuncios.png" class="icono" style="width: 41px;height: 34px">
+        <li (click)="goTo('my-offers')"><img src="/iconoMisAnuncios.png" class="icono" style="width: 41px;height: 34px">
           My offers
         </li>
         <li><img src="/iconoFavorito.png" class="icono" style="width: 39px;height: 39px;">

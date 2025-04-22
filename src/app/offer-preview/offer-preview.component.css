@@ -1,0 +1,38 @@
+.offer-preview-card {
+  margin: 40px;
+  border: 1px solid #EB5E28;
+  padding: 20px;
+}
+
+.offer-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.offer-card-header h2 {
+  font-weight: 500;
+  font-size: 32px;
+  color: #000000;
+  margin: 10px 0;
+}
+
+p {
+  font-weight: 400;
+  font-size: 14px;
+  color: #000000;
+  margin: 15px 0;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #EB5E28;
+  margin: 20px 10px;
+}
+
+.offer-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50px 50px 20px 50px;
+}

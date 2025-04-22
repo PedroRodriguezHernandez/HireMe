@@ -1,18 +1,19 @@
 import { Component } from '@angular/core';
-import {LateralOrangeComponent} from '../lateral-orange/lateral-orange.component';
 import {TextInputComponent} from '../text-input/text-input.component';
 import {ButonComponent} from '../buton/buton.component';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {SupabaseService} from '../../services/supabase.service';
 import {NgIf} from '@angular/common';
 import {showAlert} from '../../services/utils';
+import {FooterComponent} from '../footer/footer.component';
 import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
   imports: [
-    LateralOrangeComponent,
     TextInputComponent,
+    ButonComponent,
+    FooterComponent,
     ButonComponent,
     ReactiveFormsModule,
     NgIf

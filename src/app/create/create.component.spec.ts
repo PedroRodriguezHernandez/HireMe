@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LateralOrangeComponent } from './lateral-orange.component';
+import { CreateComponent } from './create.component';
 
-describe('LateralOrangeComponent', () => {
-  let component: LateralOrangeComponent;
-  let fixture: ComponentFixture<LateralOrangeComponent>;
+describe('CreateComponent', () => {
+  let component: CreateComponent;
+  let fixture: ComponentFixture<CreateComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LateralOrangeComponent]
+      imports: [CreateComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LateralOrangeComponent);
+    fixture = TestBed.createComponent(CreateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,24 +1,42 @@
+.lateral {
+  width: 500px;
+  height: 100vh;
+  background-color: #EB5E28;
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+}
+
 .logo img {
   height: 100px;
   border: none;
   cursor: pointer;
-  width: auto;
+  display: block;
 }
 
 .header {
   position: relative;
   width: 100%;
-  z-index: 10;
+}
 
+.container {
+  display: flex;
+  flex-direction: row;
 }
 
 .login {
-  position: relative;
-  z-index: 3;
   width: fit-content;
   text-align: center;
-  margin-top: -80px;
-  margin-left: 750px;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
 }
 
 .h1 {
@@ -37,3 +55,35 @@
 .text-input {
   padding-top: 20px;
 }
+
+
+.girl {
+  position: absolute;
+  left: 200px;
+  bottom: 0;
+  z-index: 2;
+}
+
+.girl img {
+  width: 200px;
+  height: auto;
+}
+
+.password {
+  text-align: center;
+  width: 100%;
+  padding-bottom: 30px;
+  cursor: pointer;
+  padding-top: 15px;
+}
+
+.register {
+  cursor: pointer;
+  padding-top: 20px;
+}
+
+.highlight {
+  color: #EB5E28;
+}
+
+
