@@ -8,20 +8,17 @@
 </head>
 <app-header-with-login></app-header-with-login>
 <body>
-<div class="header">
-  <app-header-with-login></app-header-with-login>
-</div>
 <div class="container">
   <aside class="sidebar">
     <nav>
       <ul>
-        <li (click)="goTo('my-offers')"><img src="/iconoMisAnuncios.png" class="icono" style="width: 41px;height: 34px">
+        <li (click)="goTo('my-offers')"><img src="/iconoMisAnuncios.png" class="icono" style="width: 41px;height: 34px" alt="icono anuncios">
           My offers
         </li>
-        <li><img src="/iconoFavorito.png" class="icono" style="width: 39px;height: 39px;">
+        <li (click)="alert('Not implemented yet')"><img src="/iconoFavorito.png" class="icono" style="width: 39px;height: 39px;">
           Favorites
         </li>
-        <li><img src="/iconoNuevoAnuncio.png" class="icono" id="nuevoAnuncio" style="width: 45px;height: 45px">
+        <li (click)="goTo('create')"><img src="/iconoNuevoAnuncio.png" class="icono" id="nuevoAnuncio" style="width: 45px;height: 45px">
           Publish new offer
         </li>
       </ul>
@@ -32,14 +29,16 @@
   </aside>
   <main class="profile">
     <section class="info">
-      <img src="./imageLogo.png" alt="Avatar" class="avatar">
+      <input type="file" #fileInput accept="image/*" (change)="onPhotoSelected($event)" style="display: none" />
+      <img id="ProfilePhoto" [src]="imageSrc" alt="Avatar" class="avatar" (click)="changeProfilePhoto(fileInput)" />
       <div class="details">
         <h2 style="margin-top: 4em">{{name}}</h2>
         <a href="mailto:ejemplo@gmail.com">{{ email }}</a>
         <p>{{location}} ES</p>
-        <a href="#">Add phone number</a>
+        <a>{{ phone }}</a>
         <div class="buttons">
-          <app-buton text="Upload CV"></app-buton>
+          <input type="file" #fileInput accept=".pdf" style="display: none" (change)="onFileSelected($event)" />
+          <app-buton text="Upload CV" (click)="uploadCV(fileInput)"></app-buton>
           <div id="actualizarCVButton"><app-buton text="Update CV"></app-buton></div>
         </div>
       </div>
@@ -47,4 +46,7 @@
   </main>
 </div>
 </body>
+<footer>
+  <app-footer></app-footer>
+</footer>
 </html>
