@@ -18,6 +18,10 @@ body {
   background: #fff;
 }
 
+#publishNewOffer {
+  margin-bottom: 4em;
+}
+
 #logo {
   width: 70%;
   height: 17%;
@@ -36,7 +40,7 @@ body {
   background: #fff;
   padding: 20px;
   border-right: 2px solid #ddd;
-  height: 80%;
+  height: 70%;
 }
 
 #ProfilePhoto {
@@ -84,7 +88,6 @@ nav ul li {
 .profile {
   flex-grow: 1;
   padding: 20px;
-  margin-top: -7em;
 }
 
 input {
@@ -100,6 +103,7 @@ input {
 .info {
   display: flex;
   align-items: center;
+  height: 20%;
 }
 .details {
   margin-left: 40px;

@@ -18,14 +18,13 @@
         <li (click)="alert('Not implemented yet')"><img src="/iconoFavorito.png" class="icono" style="width: 39px;height: 39px;">
           Favorites
         </li>
-        <li (click)="goTo('create')"><img src="/iconoNuevoAnuncio.png" class="icono" id="nuevoAnuncio" style="width: 45px;height: 45px">
+        <li id="publishNewOffer" (click)="goTo('create')"><img src="/iconoNuevoAnuncio.png" class="icono" id="nuevoAnuncio" style="width: 45px;height: 45px">
           Publish new offer
         </li>
       </ul>
     </nav>
     <app-buton text="Log Out" (click)="logout()"></app-buton>
     <br>
-    <div id="deleteProfileButton"><app-buton text="Delete profile"></app-buton></div>
   </aside>
   <main class="profile">
     <section class="info">
@@ -39,7 +38,7 @@
         <div class="buttons">
           <input type="file" #fileInput accept=".pdf" style="display: none" (change)="onFileSelected($event)" />
           <app-buton text="Upload CV" (click)="uploadCV(fileInput)"></app-buton>
-          <div id="actualizarCVButton"><app-buton text="Update CV"></app-buton></div>
+          <div id="actualizarCVButton"><app-buton text="Show CV"></app-buton></div>
         </div>
       </div>
     </section>
