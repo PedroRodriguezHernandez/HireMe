@@ -1,14 +1,13 @@
 import {Component, Input} from '@angular/core';
 import {ButonComponent} from '../buton/buton.component';
 import {Router} from '@angular/router';
-import {NgIf, NgOptimizedImage} from '@angular/common';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-offer-preview',
   imports: [
     ButonComponent,
-    NgIf,
-    NgOptimizedImage
+    NgIf
   ],
   templateUrl: './offer-preview.component.html',
   styleUrl: './offer-preview.component.css'
