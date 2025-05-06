@@ -10,6 +10,16 @@
   align-items: center;
 }
 
+.offer-card-header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  img {
+    cursor: pointer;
+  }
+}
+
 .offer-card-header h2 {
   font-weight: 500;
   font-size: 32px;

@@ -1,17 +1,22 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {ButonComponent} from '../buton/buton.component';
 import {Router} from '@angular/router';
+import {NgIf, NgOptimizedImage} from '@angular/common';
 
 @Component({
   selector: 'app-offer-preview',
   imports: [
-    ButonComponent
+    ButonComponent,
+    NgIf,
+    NgOptimizedImage
   ],
   templateUrl: './offer-preview.component.html',
   styleUrl: './offer-preview.component.css'
 })
 export class OfferPreviewComponent {
+  @Input() myOfferFlag: boolean = true;
   title: string = "Offer Title";
+  isFavorite: boolean = false;
 
   constructor(private router: Router) {}
 
@@ -42,4 +47,9 @@ export class OfferPreviewComponent {
   deleteOffer() {
 
   }
+
+  toggleFavorite() {
+    this.isFavorite = !this.isFavorite;
+  }
+
 }
