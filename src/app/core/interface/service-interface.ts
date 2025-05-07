@@ -9,7 +9,7 @@ export interface Service{
   experience: string;
   short_description: string;
   description: string;
-  telephone_number?: string;
+  telefone_number?: string;
   created_at?: string;
 }
 
