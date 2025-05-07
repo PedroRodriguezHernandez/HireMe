@@ -35,11 +35,14 @@
 
     <p class="password">Forgot your password?</p>
 
-    <app-buton text="Iniciar Sesión" (action)="login()"></app-buton>
+    <app-buton text="Login" (action)="login()"></app-buton>
 
     <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
 
-    <p class="register">Don't have an account yet? <span class="highlight">Sign up</span></p>
+    <p class="register">
+      Don't have an account yet?
+      <a routerLink="/register" class="highlight">Sign up</a>
+    </p>
   </form>
 </div>
 

@@ -77,13 +77,22 @@
   padding-top: 15px;
 }
 
+.password:hover {
+  color: #EB5E28;
+}
+
 .register {
   cursor: pointer;
   padding-top: 20px;
+  text-decoration: none;
 }
 
 .highlight {
   color: #EB5E28;
+  text-decoration: none;
 }
 
+.highlight:hover {
+  color: black;
+}
 

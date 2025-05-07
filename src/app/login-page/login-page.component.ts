@@ -6,7 +6,7 @@ import {SupabaseService} from '../../services/supabase.service';
 import {NgIf} from '@angular/common';
 import {showAlert} from '../../services/utils';
 import {FooterComponent} from '../footer/footer.component';
-import {Router} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -16,7 +16,8 @@ import {Router} from '@angular/router';
     FooterComponent,
     ButonComponent,
     ReactiveFormsModule,
-    NgIf
+    NgIf,
+    RouterLink
   ],
   templateUrl: './login-page.component.html',
   standalone: true,
