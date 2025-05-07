@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HeaderWithLoginComponent} from '../../header-with-login/header-with-login.component';
 import {FooterComponent} from '../../footer/footer.component';
 import {OfferPreviewComponent} from '../../offer-preview/offer-preview.component';
@@ -17,7 +17,7 @@ import {NgForOf} from '@angular/common';
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })
-export class HomePageComponent {
+export class HomePageComponent implements OnInit {
   services: Service[] = [];
 
   constructor(private offerService: OfferSupabaseService) {}
