@@ -8,12 +8,13 @@ import {TextInputComponent} from './text-input/text-input.component';
 import {FooterComponent} from './footer/footer.component';
 import {ProfileComponent} from './profile/profile.component';
 import {CreateComponent} from './create/create.component';
+import {RegisterPageComponent} from './register-page/register-page.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, ButonComponent, HeaderWithLoginComponent,
-    LoginPageComponent, TextInputComponent, ProfileComponent, FooterComponent, CreateComponent],
+    LoginPageComponent, TextInputComponent, ProfileComponent, FooterComponent, CreateComponent, RegisterPageComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
