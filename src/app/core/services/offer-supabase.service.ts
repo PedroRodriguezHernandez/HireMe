@@ -47,7 +47,7 @@ export class OfferSupabaseService implements ServiceInterface {
               experience: offer.experience,
               short_description: offer.short_description,
               description: offer.description,
-              telephone_number: offer.telephone_number
+              telefone_number: offer.telefone_number
             }])
             .select();
 

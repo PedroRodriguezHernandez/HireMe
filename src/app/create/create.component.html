@@ -4,8 +4,8 @@
       <div class="top">
         <input class="title"
                type="text"
-               [ngClass]="{'invalid-field': formSubmitted && form.controls.title?.invalid}"
-               [formControl]="form.controls.title"
+               [ngClass]="{'invalid-field': formSubmitted && form.controls.name?.invalid}"
+               [formControl]="form.controls.name"
                placeholder="Title" />
         <input class="data"
                type="text"
@@ -31,17 +31,17 @@
         <textarea id="small-text"
                   (input)="onSmallCharInput($event)"
                   [value]="smallText"
-                  [ngClass]="{'invalid-field': formSubmitted && form.controls.short?.invalid}"
-                  [formControl]="form.controls.short"
+                  [ngClass]="{'invalid-field': formSubmitted && form.controls.short_description?.invalid}"
+                  [formControl]="form.controls.short_description"
                   placeholder="Write here..."></textarea>
         <p class = "counter">{{ smallCharCount }} / {{ SMALL_LIMIT }} characters</p>
         <h2>Detailed description
         </h2>
         <textarea id="large-text"
                   (input)="onLargeCharInput($event)"
-                  [ngClass]="{'invalid-field':  formSubmitted && form.controls.large?.invalid}"
+                  [ngClass]="{'invalid-field':  formSubmitted && form.controls.description?.invalid}"
                   [value]="largeText"
-                  [formControl]="form.controls.large"
+                  [formControl]="form.controls.description"
                   placeholder="Write here..."></textarea>
         <p class = "counter">{{ largeCharCount }} / {{ LARGE_LIMIT }} characters</p>
       </div>

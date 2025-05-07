@@ -2,7 +2,7 @@ import {Observable} from 'rxjs';
 
 export interface Service{
   id?: string;
-  creator_id:string;
+  creator_id?:string;
   name: string;
   location: string;
   price: number;
