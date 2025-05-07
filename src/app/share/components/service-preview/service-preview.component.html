@@ -1,0 +1,24 @@
+<div class="service-preview-card">
+  <div class="service-card-header">
+    <h2>{{title}}</h2>
+    <p>Posted {{dateToDays()}} ago</p>
+  </div>
+  <p class="location">{{getLocation()}}</p>
+  <p class="salary">{{getSalary()}}</p>
+  <p class="experience">{{getExperience()}} experience</p>
+
+  <hr class="divider">
+
+  <p class="description">{{getDescription()}}</p>
+
+  <div class="offer-card-footer">
+    <app-buton
+      text="Edit offer"
+      (action)="goTo('')"
+    ></app-buton>
+    <app-buton
+      text="Delete offer"
+      (action)="deleteOffer()"
+    ></app-buton>
+  </div>
+</div>

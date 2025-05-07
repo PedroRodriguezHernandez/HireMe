@@ -3,9 +3,11 @@
 <div class="my-offers-container">
   <h1 class="my-offers-title">My Offers</h1>
 
-  <app-offer-preview></app-offer-preview>
-  <app-offer-preview></app-offer-preview>
-  <app-offer-preview></app-offer-preview>
+  <app-offer-preview
+    *ngFor="let service of services"
+    [myOfferFlag]=false
+    [service]="service"
+  ></app-offer-preview>
 </div>
 
 <app-footer></app-footer>

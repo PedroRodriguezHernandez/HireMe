@@ -91,5 +91,24 @@ export class SupabaseService {
     return { userData: data };
   }
 
+  async getMyPosts(): Promise<{ myPosts: string[] } | { error: string }> {
+    const { data: { user }, error: authError } = await this.supabase.auth.getUser();
+
+    if (authError || !user) {
+      return { error: 'No authenticated user found' };
+    }
+
+    const { data, error } = await this.supabase
+      .from('users')  // Asegúrate de que esta es la tabla correcta
+      .select('my_posts')
+      .eq('id', user.id)
+      .single();
+
+    if (error) {
+      return { error: `Error fetching my_posts: ${error.message}` };
+    }
+
+    return { myPosts: data.my_posts ?? [] };
+  }
 
 }

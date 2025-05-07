@@ -1,0 +1,11 @@
+<app-header-with-login></app-header-with-login>
+
+  <div class="home-container">
+    <app-offer-preview
+      *ngFor="let service of services"
+      [myOfferFlag]=false
+      [service]="service"
+    ></app-offer-preview>
+  </div>
+
+<app-footer></app-footer>
