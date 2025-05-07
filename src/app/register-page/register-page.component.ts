@@ -70,10 +70,8 @@ export class RegisterPageComponent {
 
       if (this.loginForm.errors?.['fieldsMismatch']) {
         console.warn('Emails or passwords do not match');
-        showAlert('Mismatch', 'Emails or passwords do not match');
       } else {
         console.warn('Formulario inválido por otros motivos');
-        showAlert('Invalid form', 'Please check your email and password');
       }
     }
   }
