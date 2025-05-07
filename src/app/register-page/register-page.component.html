@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="lateral">
+    <div class="logo">
+      <img src="/logoSinFondo.png">
+    </div>
+  </div>
+
+  <div class="girl">
+    <img src="/girl.png">
+  </div>
+
+  <div class="login">
+    <h1>Welcome!</h1>
+
+    <div class="imageLogo">
+      <img src="/imageLogo.png">
+    </div>
+
+    <form [formGroup]="loginForm">
+      <div class="text-input">
+        <app-text-input
+          placeholder="Name and surname"
+          type="text"
+          [control]="loginForm.controls.name"
+        ></app-text-input>
+      </div>
+
+      <div class="text-input">
+        <app-text-input
+          placeholder="Email"
+          type="email"
+          [control]="loginForm.controls.email"
+        ></app-text-input>
+      </div>
+
+      <div class="text-input">
+        <app-text-input
+          placeholder="Repeat the email"
+          type="email"
+          [control]="loginForm.controls.repeatEmail"
+        ></app-text-input>
+      </div>
+
+      <div class="text-input">
+        <app-text-input
+          placeholder="Password"
+          type="password"
+          [control]="loginForm.controls.password"
+        ></app-text-input>
+      </div>
+
+      <div class="text-input">
+        <app-text-input
+          placeholder="Repeat the password"
+          type="password"
+          [control]="loginForm.controls.repeatPassword"
+        ></app-text-input>
+      </div>
+
+      <div class="button-wrapper">
+        <app-buton class="button" text="Sign up" (action)="register()"></app-buton>
+      </div>
+
+      <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
+      <p class="login">
+        Do you already have an account?
+        <a routerLink="/" class="highlight">Login</a>
+      </p>
+    </form>
+
+  </div>

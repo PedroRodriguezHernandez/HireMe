@@ -1,0 +1,103 @@
+.lateral {
+  width: 500px;
+  height: 100vh;
+  background-color: #EB5E28;
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+}
+
+.logo img {
+  height: 100px;
+  border: none;
+  cursor: pointer;
+  display: block;
+}
+
+.header {
+  position: relative;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.login {
+  width: fit-content;
+  text-align: center;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+}
+
+.h1 {
+  color: black;
+  text-align: center;
+  width: 100%;
+  font-size: 20px;
+}
+
+.imageLogo img {
+  height: 150px;
+  width: auto;
+  max-width: 100%;
+}
+
+.text-input {
+  padding-top: 20px;
+}
+
+
+.girl {
+  position: absolute;
+  left: 200px;
+  bottom: 0;
+  z-index: 2;
+}
+
+.girl img {
+  width: 200px;
+  height: auto;
+}
+
+.password {
+  text-align: center;
+  width: 100%;
+  padding-bottom: 30px;
+  cursor: pointer;
+  padding-top: 15px;
+}
+
+.login {
+  cursor: pointer;
+  padding-top: 20px;
+  text-decoration: none;
+}
+
+.login p {
+  display: inline;
+}
+
+.highlight {
+  color: #EB5E28;
+  text-decoration: none;
+}
+
+.highlight:hover{
+  color: black;
+}
+
+.button-wrapper {
+  padding-top: 40px;
+  padding-bottom: 30px;
+}
+
