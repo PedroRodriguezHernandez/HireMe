@@ -9,40 +9,41 @@
     <img src="/girl.png">
   </div>
 
-<div class="login">
-  <h1>Welcome back!</h1>
+  <div class="login">
+    <h1>Welcome back!</h1>
 
-  <div class="imageLogo">
-    <img src="/imageLogo.png">
+    <div class="imageLogo">
+      <img src="/imageLogo.png">
+    </div>
+
+    <form [formGroup]="loginForm">
+      <div class="text-input">
+        <app-text-input
+          placeholder="Email"
+          type="email"
+          [control]="loginForm.controls.email"
+        ></app-text-input>
+      </div>
+
+      <div class="text-input">
+        <app-text-input
+          placeholder="Password"
+          type="password"
+          [control]="loginForm.controls.password"
+        ></app-text-input>
+      </div>
+
+      <p class="password">Forgot your password?</p>
+
+      <app-buton text="Login" (action)="login()"></app-buton>
+
+      <!-- Solo se muestra si hay error -->
+      <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
+      <p class="register">
+        Don't have an account yet?
+        <a routerLink="/register" class="highlight">Sign up</a>
+      </p>
+    </form>
   </div>
-
-  <form [formGroup]="loginForm">
-    <div class="text-input">
-      <app-text-input
-        placeholder="Email"
-        type="email"
-        [control]="loginForm.controls.email"
-      ></app-text-input>
-    </div>
-
-    <div class="text-input">
-      <app-text-input
-        placeholder="Password"
-        type="password"
-        [control]="loginForm.controls.password"
-      ></app-text-input>
-    </div>
-
-    <p class="password">Forgot your password?</p>
-
-    <app-buton text="Login" (action)="login()"></app-buton>
-
-    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
-
-    <p class="register">
-      Don't have an account yet?
-      <a routerLink="/register" class="highlight">Sign up</a>
-    </p>
-  </form>
 </div>
-

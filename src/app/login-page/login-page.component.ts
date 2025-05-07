@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import {TextInputComponent} from '../text-input/text-input.component';
-import {ButonComponent} from '../buton/buton.component';
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {SupabaseService} from '../../services/supabase.service';
-import {NgIf} from '@angular/common';
-import {showAlert} from '../../services/utils';
-import {FooterComponent} from '../footer/footer.component';
-import {Router, RouterLink} from '@angular/router';
+import { TextInputComponent } from '../text-input/text-input.component';
+import { ButonComponent } from '../buton/buton.component';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { SupabaseService } from '../../services/supabase.service';
+import { NgIf } from '@angular/common';
+import { FooterComponent } from '../footer/footer.component';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -14,7 +13,6 @@ import {Router, RouterLink} from '@angular/router';
     TextInputComponent,
     ButonComponent,
     FooterComponent,
-    ButonComponent,
     ReactiveFormsModule,
     NgIf,
     RouterLink
@@ -28,29 +26,36 @@ export class LoginPageComponent {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
+
   errorMessage: string = '';
 
-  constructor(private supabaseService: SupabaseService, private router : Router) {
-
+  constructor(
+    private supabaseService: SupabaseService,
+    private router: Router
+  ) {
+    // Limpiar mensaje de error si el usuario modifica los campos
+    this.loginForm.valueChanges.subscribe(() => {
+      this.errorMessage = '';
+    });
   }
 
   login() {
     if (this.loginForm.valid) {
       const credentials = {
-        email: this.loginForm.value.email ?? "",
-        password: this.loginForm.value.password ?? ""
+        email: this.loginForm.value.email ?? '',
+        password: this.loginForm.value.password ?? ''
       };
 
       this.supabaseService.signIn(credentials)
         .then(response => {
           console.log('Login successful:', response);
-          this.router.navigate(["my-profile"]);
+          this.router.navigate(['my-profile']);
         })
-        .catch(async error => {
-          showAlert("Email or password is incorrect", "Please check your email and password and try again.");
+        .catch(error => {
+          this.errorMessage = 'Email or password is incorrect';
         });
     } else {
-      showAlert("Invalid form", "Please check your email and password.");
+      this.errorMessage = 'Email or password is incorrect';
     }
   }
 }
