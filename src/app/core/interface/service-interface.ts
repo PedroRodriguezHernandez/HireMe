@@ -10,6 +10,7 @@ export interface Service{
   short_description: string;
   description: string;
   telephone_number?: string;
+  created_at?: string;
 }
 
 export interface ServiceInterface {

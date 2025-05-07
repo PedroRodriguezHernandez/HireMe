@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {ButonComponent} from '../buton/buton.component';
 import {Router} from '@angular/router';
 import {NgIf} from '@angular/common';
+import {Service} from '../core/interface/service-interface';
 
 @Component({
   selector: 'app-offer-preview',
@@ -14,29 +15,16 @@ import {NgIf} from '@angular/common';
 })
 export class OfferPreviewComponent {
   @Input() myOfferFlag: boolean = true;
-  title: string = "Offer Title";
+  @Input() service!: Service;
   isFavorite: boolean = false;
 
   constructor(private router: Router) {}
 
   dateToDays() {
-    return "X days";
-  }
-
-  getLocation() {
-    return "35019, Las Palmas de Gran Canaria, ES";
-  }
-
-  getSalary() {
-    return "X€/h on-site";
-  }
-
-  getExperience() {
-    return "A lot of";
-  }
-
-  getDescription() {
-    return "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan lacinia lectus. Suspendisse pulvinar dui felis. Sed vel venenatis nisl. Sed elit odio, lacinia ut placerat et, vestibulum vitae leo. Suspendisse non justo a tellus interdum porttitor. Etiam a tristique enim, at mattis ipsum.";
+    const date = new Date(this.service.created_at || new Date());
+    const today = new Date();
+    const timeDiff = Math.abs(today.getTime() - date.getTime());
+    return Math.ceil(timeDiff / (1000 * 3600 * 24));
   }
 
   goTo(pageName: string) {

@@ -1,8 +1,8 @@
 <div class="offer-preview-card">
   <div class="offer-card-header">
-    <h2>{{title}}</h2>
+    <h2>{{service.name}}</h2>
     <div class="offer-card-header-right">
-      <p>Posted {{dateToDays()}} ago</p>
+      <p>Posted {{dateToDays()}} days ago</p>
       <img
         *ngIf="!myOfferFlag"
         [src]="isFavorite ? '/favorite_checked.png' : '/favorite_unchecked.png'"
@@ -12,13 +12,13 @@
       >
     </div>
   </div>
-  <p class="location">{{getLocation()}}</p>
-  <p class="salary">{{getSalary()}}</p>
-  <p class="experience">{{getExperience()}} experience</p>
+  <p class="location">{{service.location}}</p>
+  <p class="salary">{{service.price}} €</p>
+  <p class="experience">{{service.experience}} experience</p>
 
   <hr class="divider">
 
-  <p class="description">{{getDescription()}}</p>
+  <p class="description">{{service.short_description}}</p>
 
   <div class="offer-card-footer" *ngIf="myOfferFlag">
     <app-buton
