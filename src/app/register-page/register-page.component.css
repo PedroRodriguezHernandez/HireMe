@@ -101,3 +101,10 @@
   padding-bottom: 30px;
 }
 
+.error-message {
+  color: red;
+  margin-top: 4px;
+  font-size: 0.9rem;
+}
+
+
