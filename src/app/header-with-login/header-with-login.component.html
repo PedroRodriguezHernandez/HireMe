@@ -1,16 +1,16 @@
 <header class="header">
   <a class="logo">
-    <img src="/logoFondoBlanco.jpg">
+    <img src="/logoFondoBlanco.jpg" alt="Logo" (click)="goTo('home')">
   </a>
   <nav class="nav">
     <div class="search-container-all">
       <div class="search-container">
-        <img src="/search.png" class="search-icon">
+        <img src="/search.png" class="search-icon" alt="Search">
         <input type="text" placeholder="Search for a new opportunity" />
       </div>
     </div>
     <a  class="chat">
-      <img src="/chat.png">
+      <img src="/chat.png" alt="Chat">
     </a>
     <button class="btn-login" (click)="goTo('my-profile')">Profile</button>
   </nav>
