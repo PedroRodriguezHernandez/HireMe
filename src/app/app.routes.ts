@@ -21,6 +21,10 @@ export const routes: Routes = [
       .then(m => m.CreateComponent)
   },
   {
+    path: "home", loadComponent: () => import("./features/home-page/home-page.component")
+      .then(m => m.HomePageComponent)
+  },
+  {
     path: "register", loadComponent: () => import("./register-page/register-page.component")
       .then(m => m.RegisterPageComponent)
   },
