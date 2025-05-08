@@ -7,7 +7,7 @@ import {OfferSupabaseService} from '../../core/services/offer-supabase.service';
 import {NgForOf} from '@angular/common';
 
 @Component({
-  selector: 'app-home-page',
+  selector: 'app-initial-page',
   imports: [
     HeaderWithLoginComponent,
     FooterComponent,
