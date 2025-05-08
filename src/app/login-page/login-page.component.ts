@@ -39,6 +39,10 @@ export class LoginPageComponent {
     });
   }
 
+  goTo(pageName: string) {
+    this.router.navigate([pageName])
+  }
+
   login() {
     if (this.loginForm.valid) {
       const credentials = {
@@ -59,3 +63,6 @@ export class LoginPageComponent {
     }
   }
 }
+
+
+
