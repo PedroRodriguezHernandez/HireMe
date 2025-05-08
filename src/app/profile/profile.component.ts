@@ -6,6 +6,7 @@ import {HeaderComponent} from '../header/header.component';
 import {HeaderWithLoginComponent} from '../header-with-login/header-with-login.component';
 import {Router} from '@angular/router';
 import {FooterComponent} from '../footer/footer.component';
+import {supabase} from '../core/services/supabase.service';
 
 @Component({
   selector: 'app-profile',
@@ -30,16 +31,18 @@ export class ProfileComponent {
   imageSrc: string = '';
 
   async ngOnInit() {
+    const limpiarCampo = (valor: any): string => {
+      const limpio = JSON.stringify(valor).replace(/['"]+/g, '').trim();
+      return limpio === '' ? '__' : limpio;
+    };
+
     const userData = await this.supabaseService.getUserData();
-    this.name = JSON.stringify(userData["userData"]["name"]);
-    this.email = JSON.stringify(userData["userData"]["email"]);
-    this.location = JSON.stringify(userData["userData"]["location"]);
-    this.phone = JSON.stringify(userData["userData"]["phone"]);
-    this.name = this.name.replace(/['"]+/g, '');
-    this.email = this.email.replace(/['"]+/g, '');
-    this.location = this.location.replace(/['"]+/g, '');
-    this.location = this.location.replace(/['"]+/g, '');
-    this.phone = this.phone.replace(/['"]+/g, '');
+
+    this.name     = limpiarCampo(userData["userData"]["name"]);
+    this.email    = limpiarCampo(userData["userData"]["email"]);
+    this.location = limpiarCampo(userData["userData"]["location"]);
+    this.phone    = limpiarCampo(userData["userData"]["phone"]);
+
 
     const photo = userData["userData"]["photo"];
     if (photo == '') {
@@ -53,20 +56,56 @@ export class ProfileComponent {
     fileInput.click();
   }
 
-  onPhotoSelected(event: Event) {
-    const input = event.target as HTMLInputElement;
+async onPhotoSelected(event: Event) {
+  const input = event.target as HTMLInputElement;
 
-    if (input.files && input.files[0]) {
-      const file = input.files[0];
-      const reader = new FileReader();
+  if (input.files && input.files[0]) {
+    const file = input.files[0];
 
-      reader.onload = (e: ProgressEvent<FileReader>) => {
-        this.imageSrc = e.target?.result as string;
-      };
-
-      reader.readAsDataURL(file);
+    if (!file.type.startsWith('image/')) {
+      alert('You must select an image.');
+      return;
     }
+
+    const fileName = `${Date.now()}_${file.name}`;
+    const user = await this.supabaseService.getUserData();
+    const userId = user["userData"]["id"];
+    const filePath = `${userId}/avatar.jpg`;
+
+    if (!userId) {
+      alert('User not authenticated.');
+      return;
+    }
+
+    const { data: uploadData, error: uploadError } = await supabase
+      .storage
+      .from('avatars')
+      .upload(filePath, file, {
+        cacheControl: '3600',
+        upsert: true,
+      });
+
+    if (uploadError) {
+      console.error('Error al subir la imagen:', uploadError);
+      return;
+    }
+
+    const { data: publicUrlData } = supabase
+      .storage
+      .from('avatars')
+      .getPublicUrl(filePath);
+
+    const avatarUrl = publicUrlData.publicUrl;
+    const { error: updateError } = await supabase
+      .from('users')
+      .update({ photo: avatarUrl })
+      .eq('id', userId);
+
+    this.imageSrc = avatarUrl;
+
   }
+}
+
 
   logout() {
     this.supabaseService.signOut();
@@ -80,7 +119,7 @@ export class ProfileComponent {
   selectedFile: File | null = null;
 
   uploadCV(fileInput: HTMLInputElement) {
-    fileInput.click(); // abre el explorador de archivos
+    fileInput.click();
   }
 
   onFileSelected(event: Event) {
@@ -99,6 +138,30 @@ export class ProfileComponent {
 
 
   protected readonly alert = alert;
+
+  updateProfile() {
+    const fields = [
+      { id: 'ProfileName', newId: 'nombreUsuario' },
+      { id: 'ProfileEmail', newId: 'emailUsuario' },
+      { id: 'ProfileLocation', newId: 'ubicacionUsuario' },
+      { id: 'ProfilePhone', newId: 'telefonoUsuario' }
+    ];
+
+    for (const field of fields) {
+      const element = document.getElementById(field.id);
+
+      if (element) {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.value = element.textContent?.trim() || '';
+        input.id = field.newId;
+
+        input.className = element.className;
+
+        element.replaceWith(input);
+      }
+    }
+  }
 }
 
 

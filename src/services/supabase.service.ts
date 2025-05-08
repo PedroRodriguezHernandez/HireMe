@@ -13,28 +13,29 @@ export class SupabaseService {
     this.supabase = createClient(environment.supabaseUrl, environment.supabaseKey);
   }
 
-  async signUp(name: string, email: string, repeatEmail: string, password: string, repeatPassword: string) {
-    if (email !== repeatEmail) {
-      return 'Emails do not match';
-    }
-    if (password !== repeatPassword) {
-      return 'Passwords do not match';
-    }
-    const { data: { user, session }, error } = await this.supabase.auth.signUp({
-      email,
-      password,
-    });
-
+  async signUp(name: string, email: string, password: string): Promise<any> {
+    const { data, error } = await this.supabase.auth.signUp(
+      {
+        email: email,
+        password: password
+      }
+    )
     if (error) {
-      return error.message;
+      return { error: error.message };
+    }
+    const user = data?.user;
+
+    if (!user) {
+      return { error: 'No se pudo obtener el usuario después del registro' };
     }
 
     const { error: insertError } = await this.supabase
       .from('users')
       .insert([
         {
-          id: user?.id,
+          id: user.id,
           name: name,
+          email: email,
           photo: '',
           location: '',
           phone: '',
@@ -44,10 +45,10 @@ export class SupabaseService {
       ]);
 
     if (insertError) {
-      return `Error creating user profile: ${insertError.message}`;
+      return { error: `Error al crear perfil de usuario: ${insertError.message}` };
     }
 
-    return { user, session };
+    return { user, session: data.session };
   }
 
   async signIn(credentials: {email: string, password: string}) {

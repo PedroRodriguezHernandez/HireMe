@@ -31,14 +31,14 @@
       <input type="file" #fileInput accept="image/*" (change)="onPhotoSelected($event)" style="display: none" />
       <img id="ProfilePhoto" [src]="imageSrc" alt="Avatar" class="avatar" (click)="changeProfilePhoto(fileInput)" />
       <div class="details">
-        <h2 style="margin-top: 4em">{{name}}</h2>
-        <a href="mailto:ejemplo@gmail.com">{{ email }}</a>
-        <p>{{location}} ES</p>
-        <a>{{ phone }}</a>
+        <h2 id="ProfileName" style="margin-top: 4em">{{name}}</h2>
+        <a id="ProfileEmail" href="mailto:{{email}}">{{ email }}</a>
+        <p id="ProfileLocation"> {{location}} ES</p>
+        <a id="ProfilePhone"> {{ phone }}</a>
         <div class="buttons">
           <input type="file" #fileInput accept=".pdf" style="display: none" (change)="onFileSelected($event)" />
           <app-buton text="Upload CV" (click)="uploadCV(fileInput)"></app-buton>
-          <div id="actualizarCVButton"><app-buton text="Show CV"></app-buton></div>
+          <div id="updateProfile"> <!--(click)="updateProfile()"--><app-buton text="Update Profile"></app-buton></div>
         </div>
       </div>
     </section>

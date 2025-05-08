@@ -50,20 +50,21 @@ export class RegisterPageComponent {
 
   errorMessage: string = '';
 
-  constructor(private router: Router) {
+  constructor(private supabaseService: SupabaseService, private router: Router) {
   }
   register() {
     if (this.loginForm.valid) {
       const credentials = {
+        name: this.loginForm.value.name ?? '',
         email: this.loginForm.value.email ?? '',
         password: this.loginForm.value.password ?? ''
-      };
+      }
 
-      console.log('Formulario válido, registrando con:', credentials);
-
-      // Aquí haces el registro con Supabase o el backend (si lo implementas)
-      // Luego rediriges:
-      this.router.navigate(['/my-profile']);
+      this.supabaseService.signUp(credentials.name, credentials.email, credentials.password).then(r => {
+          alert(r)
+          this.router.navigate(['/login'])
+        }
+      )
     } else {
       // Verificar errores de coincidencia
       console.log('Errores en el formulario:', this.loginForm.errors);
