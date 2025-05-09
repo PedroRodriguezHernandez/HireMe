@@ -33,8 +33,8 @@
       <div class="details">
         <h2 id="ProfileName" style="margin-top: 4em">{{name}}</h2>
         <a id="ProfileEmail" href="mailto:{{email}}">{{ email }}</a>
-        <p id="ProfileLocation"> {{location}} ES</p>
-        <a id="ProfilePhone"> {{ phone }}</a>
+        <p id="ProfileLocation"> {{location}}</p>
+        <a id="ProfilePhone" href="tel:{{ phone }}">{{phone}}</a>
         <div class="buttons">
           <input type="file" #fileInput accept=".pdf" style="display: none" (change)="onFileSelected($event)" />
           <app-buton text="Upload CV" (click)="uploadCV(fileInput)"></app-buton>

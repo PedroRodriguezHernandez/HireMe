@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidatorFn, Validators} from '@angular/forms';
-import {SupabaseService} from '../../services/supabase.service';
+import {UserSupabaseService} from '../core/services/user-supabase.service';
+import {AuthSupabaseService} from '../core/services/auth-supabase.service';
 import {Router, RouterLink} from '@angular/router';
 import {showAlert} from '../../services/utils';
 import {TextInputComponent} from '../text-input/text-input.component';
@@ -52,14 +53,14 @@ export class RegisterPageComponent {
 
   errorMessage: string = '';
 
-  constructor(private supabaseService: SupabaseService, private router: Router) {
+  constructor(private supabaseService: UserSupabaseService, private authService: AuthSupabaseService, private router: Router) {
   }
 
   goTo(pageName: string) {
     this.router.navigate([pageName])
   }
 
-  register() {
+  async register() {
     if (this.loginForm.valid) {
       const credentials = {
         name: this.loginForm.value.name ?? '',
@@ -68,14 +69,19 @@ export class RegisterPageComponent {
         email: this.loginForm.value.email ?? '',
         password: this.loginForm.value.password ?? ''
       }
-
-      this.supabaseService.signUp(credentials.name, credentials.phone, credentials.location, credentials.email, credentials.password).then(r => {
-          alert(r)
-          this.router.navigate(['/login'])
-        }
-      )
+      const response = await this.authService.signUp(
+        credentials.name,
+        credentials.phone,
+        credentials.location,
+        credentials.email,
+        credentials.password).then(r => {
+          if (response != undefined) alert(JSON.stringify(response));
+          else {
+            alert("User created successfully.");
+            this.router.navigate(["/login"]);
+          }
+      })
     } else {
-      // Verificar errores de coincidencia
       console.log('Errores en el formulario:', this.loginForm.errors);
 
       if (this.loginForm.errors?.['fieldsMismatch']) {

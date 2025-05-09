@@ -14,15 +14,15 @@ export class SupabaseService {
   }
 
   async signUp(name: string, phone: string, location: string, email: string, password: string): Promise<any> {
-    const { data, error } = await this.supabase.auth.signUp(
-      {
-        email: email,
-        password: password
-      }
-    )
+    const { data, error } = await this.supabase.auth.signUp({
+      email: email,
+      password: password,
+    });
+
     if (error) {
       return { error: error.message };
     }
+
     const user = data?.user;
 
     if (!user) {
