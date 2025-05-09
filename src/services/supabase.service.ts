@@ -13,7 +13,7 @@ export class SupabaseService {
     this.supabase = createClient(environment.supabaseUrl, environment.supabaseKey);
   }
 
-  async signUp(name: string, email: string, password: string): Promise<any> {
+  async signUp(name: string, phone: string, location: string, email: string, password: string): Promise<any> {
     const { data, error } = await this.supabase.auth.signUp(
       {
         email: email,
@@ -37,8 +37,8 @@ export class SupabaseService {
           name: name,
           email: email,
           photo: '',
-          location: '',
-          phone: '',
+          location: location,
+          phone: phone,
           favorites: [],
           my_posts: [],
         },

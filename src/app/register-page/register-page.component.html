@@ -27,6 +27,22 @@
 
       <div class="text-input">
         <app-text-input
+          placeholder="Location"
+          type="text"
+          [control]="loginForm.controls.location"
+        ></app-text-input>
+      </div>
+
+      <div class="text-input">
+        <app-text-input
+          placeholder="Phone number"
+          type="text"
+          [control]="loginForm.controls.phone"
+        ></app-text-input>
+      </div>
+
+      <div class="text-input">
+        <app-text-input
           placeholder="Email"
           type="email"
           [control]="loginForm.controls.email"

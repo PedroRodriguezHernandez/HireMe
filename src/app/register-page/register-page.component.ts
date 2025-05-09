@@ -37,7 +37,9 @@ export class RegisterPageComponent {
       email: new FormControl('', [Validators.required, Validators.email]),
       repeatEmail: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-      repeatPassword: new FormControl('', [Validators.required, Validators.minLength(6)])
+      repeatPassword: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      location: new FormControl('', [Validators.required]),
+      phone: new FormControl('', [Validators.required])
     },
     {
       validators: [
@@ -56,11 +58,13 @@ export class RegisterPageComponent {
     if (this.loginForm.valid) {
       const credentials = {
         name: this.loginForm.value.name ?? '',
+        phone: this.loginForm.value.phone ?? '',
+        location: this.loginForm.value.location ?? '',
         email: this.loginForm.value.email ?? '',
         password: this.loginForm.value.password ?? ''
       }
 
-      this.supabaseService.signUp(credentials.name, credentials.email, credentials.password).then(r => {
+      this.supabaseService.signUp(credentials.name, credentials.phone, credentials.location, credentials.email, credentials.password).then(r => {
           alert(r)
           this.router.navigate(['/login'])
         }
