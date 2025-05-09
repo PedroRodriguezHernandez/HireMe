@@ -54,6 +54,11 @@ export class RegisterPageComponent {
 
   constructor(private supabaseService: SupabaseService, private router: Router) {
   }
+
+  goTo(pageName: string) {
+    this.router.navigate([pageName])
+  }
+
   register() {
     if (this.loginForm.valid) {
       const credentials = {

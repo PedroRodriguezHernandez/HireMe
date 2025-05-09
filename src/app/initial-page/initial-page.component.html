@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.5">
+  <title>Home Page - HireMe</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<app-header-initial-page></app-header-initial-page>
+<body>
+<div class="container">
+  <aside class="sidebar">
+    <nav>
+      <nav>
+        <details open>
+          <summary>Publication Date</summary>
+          <div class="selectable"><span class="dot"></span> Any date</div>
+          <div class="selectable"><span class="dot"></span> More than a week ago</div>
+          <div class="selectable"><span class="dot"></span> More than a month ago</div>
+        </details>
+
+        <details open>
+          <summary>Salary/h</summary>
+          <input type="text" placeholder="5€">
+        </details>
+
+        <details open>
+          <summary>Experience</summary>
+          <div class="selectable"><span class="dot"></span> None</div>
+          <div class="selectable"><span class="dot"></span> Little</div>
+          <div class="selectable"><span class="dot"></span> Medium</div>
+          <div class="selectable"><span class="dot"></span> High</div>
+        </details>
+
+        <details open>
+          <summary>Presence</summary>
+          <div class="selectable"><span class="dot"></span> In-person</div>
+          <div class="selectable"><span class="dot"></span> Remote</div>
+        </details>
+      </nav>
+
+    </nav>
+  </aside>
+  <main class="search">
+    <section class="info">
+      <div class="all-content">
+        <div class="background-overlay"></div>
+        <p>Your next job starts with a click</p>
+
+        <div class="search-container">
+          <input class="input-location-first" type="text" />
+          <div class="separator"></div>
+          <img src="/location.png" class="location-icon" alt="Location" />
+          <input class="input-location" type="text" />
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll('.selectable').forEach(item => {
+      item.addEventListener('click', () => {
+        // Find the parent <details> of the current group
+        const group = item.closest('details');
+        // Remove 'active' from all .selectable in that group
+        group.querySelectorAll('.selectable').forEach(el => el.classList.remove('active'));
+        // Add 'active' to the selected item
+        item.classList.add('active');
+      });
+    });
+  });
+</script>
+
+</body>
+<footer>
+  <app-footer></app-footer>
+</footer>
+</html>

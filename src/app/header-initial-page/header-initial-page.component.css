@@ -1,0 +1,38 @@
+.btn-login {
+  color: black;
+  font-size: 25px;
+  background-color: white;
+  padding-right: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    color: #EB5E28;
+  }
+}
+
+.logo img {
+  height: 100px;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  width: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-right: 40px;
+}
+
+
+
+
