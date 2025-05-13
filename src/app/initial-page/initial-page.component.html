@@ -48,7 +48,12 @@
         <p>Your next job starts with a click</p>
 
         <div class="search-container">
-          <input class="input-location-first" type="text" />
+          <input
+            class="input-location-first"
+            type="text"
+            (keydown.enter)="onSearch(searchInput.value)"
+            #searchInput
+          />
           <div class="separator"></div>
           <img src="/location.png" class="location-icon" alt="Location" />
           <input class="input-location" type="text" />

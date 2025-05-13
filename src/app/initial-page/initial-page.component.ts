@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 import {FooterComponent} from '../footer/footer.component';
 import {HeaderInitialPageComponent} from '../header-initial-page/header-initial-page.component';
-import {ButonComponent} from '../buton/buton.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-initial-page',
   imports: [
     FooterComponent,
-    HeaderInitialPageComponent,
-    ButonComponent
+    HeaderInitialPageComponent
   ],
   templateUrl: './initial-page.component.html',
   standalone: true,
@@ -17,4 +16,12 @@ import {ButonComponent} from '../buton/buton.component';
 export class InitialPageComponent {
 
   protected readonly alert = alert;
+
+  constructor(private router: Router) {
+  }
+
+  onSearch(value: string) {
+    const trimmed = value.trim();
+    this.router.navigate(['/home'], { queryParams: { search: trimmed } });
+  }
 }

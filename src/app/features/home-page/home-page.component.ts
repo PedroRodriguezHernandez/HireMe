@@ -5,6 +5,7 @@ import {OfferPreviewComponent} from '../../offer-preview/offer-preview.component
 import {Service} from '../../core/interface/service-interface';
 import {OfferSupabaseService} from '../../core/services/offer-supabase.service';
 import {NgForOf} from '@angular/common';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-initial-page',
@@ -20,17 +21,32 @@ import {NgForOf} from '@angular/common';
 export class HomePageComponent implements OnInit {
   services: Service[] = [];
 
-  constructor(private offerService: OfferSupabaseService) {}
+  constructor(
+    private offerService: OfferSupabaseService,
+    private route: ActivatedRoute
+    ) {}
 
   ngOnInit() {
-    this.offerService.getServices().subscribe({
-      next: (services) => {
-        this.services = services;
-        console.log('Services:', services);
-      },
-      error: (error) => {
-        console.error('Error fetching services:', error);
-      }
+    this.route.queryParams.subscribe(params => {
+      const search = (params['search'] || '').toLowerCase();
+
+      this.offerService.getServices().subscribe({
+        next: (services) => {
+          if (search) {
+            this.services = services.filter(service =>
+              service.name?.toLowerCase().includes(search) ||
+              service.description?.toLowerCase().includes(search)
+            );
+          } else {
+            this.services = services;
+          }
+
+          console.log('Filtered Services:', this.services);
+        },
+        error: (error) => {
+          console.error('Error fetching services:', error);
+        }
+      });
     });
   }
 }
