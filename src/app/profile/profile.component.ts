@@ -70,7 +70,9 @@ async onPhotoSelected(event: Event) {
     const fileName = `${Date.now()}_${file.name}`;
     const user = await this.supabaseService.getUserData();
     const userId = user["userData"]["id"];
-    const filePath = `${userId}/avatar.jpg`;
+
+    const timestamp = Date.now();
+    const filePath = `${userId}/avatar_${timestamp}.jpg`;
 
     if (!userId) {
       alert('User not authenticated.');
@@ -101,8 +103,8 @@ async onPhotoSelected(event: Event) {
       .update({ photo: avatarUrl })
       .eq('id', userId);
 
-    this.imageSrc = avatarUrl;
-
+    this.imageSrc = `${avatarUrl}?t=${Date.now()}`;
+    window.location.reload();
   }
 }
 
