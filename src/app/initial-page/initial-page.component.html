@@ -1,4 +1,10 @@
-<app-header-initial-page></app-header-initial-page>
+<div *ngIf="!login">
+  <app-header-initial-page></app-header-initial-page>
+</div>
+<div *ngIf="login">
+  <app-header-with-login></app-header-with-login>
+</div>
+
 <body>
 <div class="container">
   <aside class="sidebar">
