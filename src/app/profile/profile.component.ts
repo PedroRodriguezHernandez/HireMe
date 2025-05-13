@@ -109,7 +109,7 @@ async onPhotoSelected(event: Event) {
 
   logout() {
     this.supabaseService.signOut();
-    this.router.navigate(['login']);
+    this.router.navigate(['']);
   }
 
   goTo(component: any) {
