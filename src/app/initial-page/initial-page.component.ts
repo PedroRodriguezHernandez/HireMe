@@ -22,6 +22,7 @@ export class InitialPageComponent {
 
   onSearch(value: string) {
     const trimmed = value.trim();
+    console.log(trimmed);
     this.router.navigate(['/home'], { queryParams: { search: trimmed } });
   }
 }

@@ -8,11 +8,12 @@ export const authGuard: CanActivateFn = (route, state) => {
   const authService: AuthInterface = inject(AuthSupabaseService);
   const router = inject(Router);
 
-  const publicRoutes = ['/', '/login', '/register'];
+  const publicRoutes = ['/', '/login', '/register', '/home'];
 
   return authService.getCurrentUser().pipe(
     map(user => {
-      const isPublicRoute = publicRoutes.includes(state.url);
+      const path = state.url.split('?')[0];
+      const isPublicRoute = publicRoutes.includes(path);
 
       if (user) {
         return true;
