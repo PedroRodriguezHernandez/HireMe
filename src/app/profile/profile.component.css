@@ -100,6 +100,7 @@ input {
   border-radius: 50%;
   margin-left: 2em;
   border: 1px solid gray;
+  object-fit: cover;
 }
 .info {
   display: flex;
