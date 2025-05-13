@@ -16,4 +16,8 @@ export class HeaderWithLoginComponent {
     this.router.navigate([pageName])
   }
 
+  onSearch(value: string) {
+    const trimmed = value.trim();
+    this.router.navigate(['/home'], { queryParams: { search: trimmed } });
+  }
 }

@@ -6,7 +6,12 @@
     <div class="search-container-all">
       <div class="search-container">
         <img src="/search.png" class="search-icon" alt="Search">
-        <input type="text" placeholder="Search for a new opportunity" />
+        <input
+          type="text"
+          placeholder="Search for a new opportunity"
+          (keydown.enter)="onSearch(headerSearchInput.value)"
+          #headerSearchInput
+        />
       </div>
     </div>
     <a  class="chat">
